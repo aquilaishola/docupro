@@ -1,6 +1,6 @@
 <x-app-layout>
 
-   <div class="containr">
+   <div class="container">
     <h1>Live PDF Editor</h1>
     <p>Edit your content below. When ready, click "Generate PDF".</p>
    
