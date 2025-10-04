@@ -10,7 +10,7 @@ class PdfController extends Controller
     // Show the live editor page
     public function editor()
     {
-        return view('editor');
+        return view('pdf.create');
     }
 
     // Generate PDF from live content

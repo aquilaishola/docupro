@@ -15,14 +15,6 @@
 
         <!-- Scripts -->
         @vite(['resources/css/app.css', 'resources/js/app.js'])
-        
-        <style>
-        body { font-family: DejaVu Sans, sans-serif; padding: 32px; background: #f9fafb; color: #1f2937; }
-        .container { max-width: 800px; margin: auto; }
-        #editor { height: 400px; background: white; }
-        button { margin-top: 16px; padding: 10px 20px; background: #2563eb; color: white; border: none; cursor: pointer; border-radius: 4px; }
-        button:hover { background: #1d4ed8; }
-    </style>
     </head>
     <body class="font-sans antialiased">
         <div class="min-h-screen bg-gray-100 dark:bg-gray-900">
@@ -42,37 +34,5 @@
                 {{ $slot }}
             </main>
         </div>
-        
-        
-        <!-- Quill JS -->
-<script src="https://cdn.quilljs.com/1.3.6/quill.js"></script>
-<script>
-    // Initialize Quill
-    var quill = new Quill('#editor', {
-        theme: 'snow'
-    });
-
-    document.getElementById('generate-pdf').addEventListener('click', () => {
-        const content = quill.root.innerHTML;
-
-        fetch('/pdf/generate', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-                'X-CSRF-TOKEN': '{{ csrf_token() }}'  // works if Blade template
-            },
-            body: JSON.stringify({ content: content })
-        })
-        .then(res => res.blob())
-        .then(blob => {
-            const url = window.URL.createObjectURL(blob);
-            const a = document.createElement('a');
-            a.href = url;
-            a.download = 'my-pdf.pdf';
-            a.click();
-            window.URL.revokeObjectURL(url);
-        });
-    });
-</script>
     </body>
 </html>
