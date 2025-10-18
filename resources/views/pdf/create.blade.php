@@ -38,7 +38,6 @@
       document.getElementById('generate-pdf').addEventListener('click', () => {
         const content = quill.root.innerHTML;
 
-        // Determine route dynamically
         const actionUrl = '{{ isset($pdf) ? route("pdf.update", $pdf) : route("pdf.generate") }}';
 
         fetch(actionUrl, {

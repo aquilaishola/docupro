@@ -5,7 +5,7 @@ use App\Http\Controllers\PdfController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
-    return view('editor');
+    return view('welcome');
 });
 Route::get('/dashboard', [PdfController::class, 'editor'])
 ->middleware(['auth', 'verified'])->name('dashboard');
